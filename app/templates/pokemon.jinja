@@ -1,0 +1,11 @@
+{# displays pokemon and pokemon's stats #}
+<p>
+        <img src="{{ poke.fr_sprite }}" alt="poke.name">
+        <p>Name: {{ poke.name }} </p>
+        <span> Level: {{ poke.level }}</span>
+        <p> Type: {{ poke.first_type }}
+        {% if poke.second_type %}
+            , {{ poke.second_type }}
+        {% endif %}
+        </p>
+    </p>

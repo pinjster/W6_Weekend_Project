@@ -1,0 +1,30 @@
+{% extends "base.jinja" %}
+
+{% block content %}
+<form action="{{ url_for('fight.usersearch') }}" method="POST">
+    <h3>Search for user by username</h3>
+    {{ form.hidden_tag() }}
+    {{ form.searchfield() }}
+    {{ form.submit() }}
+</form>
+{% if user %}
+    <h4>{{ user.username }}</h4>
+    <p>(trainer since {{ user.joined }})</p>
+    <p>Leaderboard score: {{ user.score }}</p>
+    {% for poke in user.my_poke %}
+        {% include "pokemon.jinja" %}
+        <form action="" method="POST">
+            <input type="submit" name="{{poke.poke_id}}" value="FIGHT">
+        </form>
+    {% endfor %}
+
+{% else %}
+    <h5>User does not exist</h5>
+    <p>All users</p>
+    {% for u in userlist %}
+        {{u.username}} <br>
+    {% endfor %}
+{% endif %}
+
+{% endblock content %}
+

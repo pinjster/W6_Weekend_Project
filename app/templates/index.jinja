@@ -1,0 +1,27 @@
+{% include "base.jinja" %}
+<h1>Welcome to Pokemonline!</h1>
+<p>Battle against other players or go catch your own pokemon!</p>
+{% if current_user.is_authenticated %}
+<form action="{{ url_for('fight.usersearch') }}" method="POST">
+    <h4>Search for user to battle!</h4>
+    {{ g.usf.hidden_tag() }}
+    {{ g.usf.searchfield() }}
+    {{ g.usf.submit() }}
+</form>
+<form action="{{ url_for('find.pokesearch') }}" method="POST">
+    <h4>Search for a pokemon to catch!</h4>
+    {{ form_poke.hidden_tag() }}
+    {{ form_poke.searchfield() }}
+    {{ form_poke.submit() }}
+</form>
+{% else %}
+<p>To begin playing, you must either Sign Up or Sign In.</p>
+<form action="" method="POST">
+    <input type="submit" name="signup" value="Sign up">
+</form>
+<p>--OR--</p>
+<form action="" method="POST">
+    <input type="submit" name="signin" value="Sign in">
+</form> 
+
+{% endif %}

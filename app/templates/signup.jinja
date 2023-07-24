@@ -1,0 +1,37 @@
+{% extends "base.jinja" %}
+
+{% block content %}
+    <h1>Sign Up</h1>
+    <form action="" method="POST" novalidate>
+        {{ form.hidden_tag() }}
+        <p>
+        {{ form.username.label }} <br>
+        {{ form.username(size=32) }}
+        {% for error in form.username.errors %}
+            <span>{{ error }}</span>
+        {% endfor %}
+        </p>
+        <p>
+        {{ form.email.label }} <br>
+        {{ form.email(size=32) }}
+        {% for error in form.email.errors %}
+            <span>{{ error }}</span>
+        {% endfor %}
+        </p>
+        <p>
+        {{ form.password.label }} <br>
+        {{ form.password(size=32) }}
+        {% for error in form.password.errors %}
+            <span>{{ error }}</span>
+        {% endfor %}
+        </p>
+        <p>
+        {{ form.reenter_password.label }} <br>
+        {{ form.reenter_password(size=32) }}
+        {% for error in form.reenter_password.errors %}
+            <span>{{ error }}</span>
+        {% endfor %}
+        </p>
+        <p>{{ form.submit() }}</p>
+    </form>
+{% endblock content %}

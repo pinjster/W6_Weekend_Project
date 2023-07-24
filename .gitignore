@@ -1,0 +1,4 @@
+pokemonline_venv/
+.env
+__pycache__
+migrations
